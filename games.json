@@ -16,5 +16,11 @@
     "name": "Web Search",
     "icon": "games/duckduckgo/images.png",
     "path": "games/duckduckgo/index.html"
+  },
+  {
+    "id": "motox3m",
+    "name": "Moto X3M",
+    "icon": "games/motox3m/image.png",
+    "path": "games/motox3m/index.html"
   }
 ]
