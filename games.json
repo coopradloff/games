@@ -8,7 +8,7 @@
   {
     "id": "polytrack",
     "name": "Polytrack",
-    "icon": "games/polytrack/icon.ico",
+    "icon": "games/polytrack/images.ico",
     "path": "games/polytrack/index.html"
   }
 ]
