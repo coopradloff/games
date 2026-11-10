@@ -20,12 +20,12 @@
   {
     "id": "motox3m",
     "name": "Moto X3M",
-    "icon": "games/motox3m/image.png",
+    "icon": "games/motox3m/IMAGE.png",
     "path": "games/motox3m/index.html"
   },
   {
     "id": "portal",
-    "name": "Portal Game",
+    "title": "Portal Game",
     "icon": "games/portal/Images/Portal1.png",
     "path": "games/portal/index.html"
   }
