@@ -13,7 +13,7 @@
   },
   {
     "id": "duckduckgo",
-    "name": "Web Search",
+    "name": "Duck.ai",
     "icon": "games/duckduckgo/images.png",
     "path": "games/duckduckgo/index.html"
   },
@@ -22,5 +22,14 @@
     "name": "Moto X3M",
     "icon": "games/motox3m/image.png",
     "path": "games/motox3m/index.html"
-  }
+  },
+  {
+  "title": "Portal Game",
+  "slug": "portal",
+  "path": "games/portal/",
+  "description": "A tile-based puzzle game featuring portals, cubes, and buttons.",
+  "thumbnail": "games/portal/Images/Portal1.png",
+  "category": "Puzzle",
+  "status": "Active"
+}
 ]
