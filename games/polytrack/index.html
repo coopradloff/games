@@ -4,90 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Polytrack</title>
-    <link rel="icon" type="image/x-icon" href="icon.ico">
-    
-    <!-- Polytrack Stylesheets -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/css/message_box_ui.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/css/customization.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/css/debug_ui.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/css/editor.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/css/editor_height_selector.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/css/hint.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/css/loading_ui.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/css/menu.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/css/speedometer.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/css/theme.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/css/time_announcer.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/css/timer.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/css/track_export_ui.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/css/track_selection_ui.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/css/transition_system.css">
-
+    <link rel="icon" type="image/x-icon" href="images.ico">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { width: 100%; height: 100%; overflow: hidden; background-color: #090d16; }
-        #screen { width: 100% !important; height: 100% !important; display: block; touch-action: none; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #090d16;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
     </style>
 </head>
-<body class="hide-cursor">
+<body>
 
-    <canvas id="screen" data-engine="three.js r150"></canvas>
-    
-    <!-- Game UI Structure -->
-    <div id="ui">
-        <div class="hidden">FPS: 1</div>
-        <div class="hint show">Press [R] or [ENTER] to restart</div>
-        <div class="hidden"><div class="background"></div><div class="box"><p></p><button class="button"></button><button class="button"></button></div></div>
-        <div class="hidden"><div class="background"></div><div class="box"><div class="bar"><button class="button"><img class="button-icon" src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/back.svg"> Back</button><button class="hidden"><img class="button-icon" src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/copy.svg"> Copy</button><button class="hidden"><img class="button-icon" src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/import.svg"> Import</button></div><textarea spellcheck="false"></textarea></div></div>
-        <div class="speedometer"><div><span><span>0</span></span><span>km/h</span></div></div>
-        <div class="hidden"><div class="hidden">New record</div><div class="current"></div><p></p></div>
-        <div class="timer">
-            <div class="left"><h2>Record</h2><div><p class="small center"><span>-</span><span>-</span><span>-</span></p></div></div>
-            <div class="center"><h2>Current</h2><div><p><span>0</span><span>0</span><span>:</span><span>1</span><span>2</span><span>.</span><span>0</span><span>3</span><span>3</span></p></div></div>
-            <div class="right"><h2>Difference</h2><div><p class="small center"><span>-</span><span>-</span><span>-</span></p></div></div>
-        </div>
-        <div class="hidden">
-            <div class="top"><button class="button"><img class="button-icon" src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/quit.svg"> Exit</button><button class="button"><img class="button-icon" src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/random.svg"> Random</button></div>
-            <div class="colors">
-                <div class="color"><h2>Base</h2><div class="IroColorPicker"></div></div>
-                <div class="color"><h2>Stripe</h2><div class="IroColorPicker"></div></div>
-                <div class="color"><h2>Frame</h2><div class="IroColorPicker"></div></div>
-                <div class="color"><h2>Rims</h2><div class="IroColorPicker"></div></div>
-            </div>
-        </div>
-        <div class="hidden">
-            <div class="top">
-                <div class="button-bar">
-                    <button class="button"><img class="button-icon" src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/quit.svg"> Exit</button>
-                    <button class="button"><img class="button-icon" src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/test.svg"> Test</button>
-                    <button class="button"><img class="button-icon" src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/random.svg"> Generate</button>
-                    <button class="button"><img class="button-icon" src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/load.svg"> Load</button>
-                    <button class="button"><img class="button-icon" src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/save.svg"> Save</button>
-                    <button class="button"><img class="button-icon" src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/export.svg"> Export</button>
-                </div>
-                <div class="trackname-input">Track name: <input type="text" maxlength="64" spellcheck="false"></div>
-            </div>
-            <div class="message-box"></div>
-            <div class="side"><button><img src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/erase.svg"></button></div>
-            <div class="editor-height-selector"><div class="buttons"><button><img src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/arrow_up.svg"></button><button><img src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/arrow_down.svg"></button></div><p>Height: 0</p></div>
-        </div>
-        <div class="hidden"><div class="bar"><button class="button"><img class="button-icon" src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/erase.svg"> Cancel</button><button class="button right"><img class="button-icon" src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/import.svg"> Import</button></div><div class="tracks-container"></div></div>
-        <div class="hidden">
-            <img src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/logo.svg" class="logo">
-            <div class="hidden"><p>Loading...</p><div><div><div></div></div></div></div>
-            <div class="hidden"><div class="bar"><button class="button"><img class="button-icon" src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/back.svg"> Back</button><button class="button right"><img class="button-icon" src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/import.svg"> Import</button></div><div class="tracks-container"><h2>Standard tracks</h2></div></div>
-            <button class="button-image button"><img src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/customize.svg"><p>Customize</p></button>
-            <button class="button-image button"><img src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/editor.svg"><p>Editor</p></button>
-            <button class="button-image button"><img src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/images/play.svg"><p>Play</p></button>
-            <div class="bottom-buttons"></div>
-            <div class="info"><a href="https://www.kodub.com" target="_blank">kodub.com - VERSION 0.2.0</a></div>
-        </div>
-    </div>
-    <div id="transition-layer" style="opacity: 0;"></div>
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/gh/wergboy/NLP@e46f2d7f33015cf93201e664a2e493800c03284d/pt/lib/ammo.js" defer></script>
-    <script type="module" src="https://cdn.jsdelivr.net/gh/wergboy/NLP@22f6094b69b1c9d45e17a82e93a41b7d88f99574/pt/dist/bundle.js" defer></script>
+    <iframe src="https://stuffed18.github.io/polytrack-0.4.1/" allowfullscreen></iframe>
 
 </body>
 </html>

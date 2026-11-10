@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DuckDuckGo Search</title>
+    <link rel="icon" type="image/x-icon" href="images.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            width: 100%;
+            height: 100%;
+            background-color: #090d16;
+            font-family: 'Outfit', sans-serif;
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .top-bar {
+            background: rgba(22, 30, 49, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        .back-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #f8fafc;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .back-btn:hover {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+        .search-form {
+            display: flex;
+            gap: 0.5rem;
+            flex: 1;
+            max-width: 600px;
+        }
+        .search-input {
+            flex: 1;
+            background: rgba(9, 13, 22, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            color: #f8fafc;
+            font-size: 0.95rem;
+            outline: none;
+        }
+        .search-input:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+        }
+        .search-submit {
+            background: #38bdf8;
+            color: #090d16;
+            border: none;
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .search-submit:hover {
+            opacity: 0.9;
+        }
+        iframe {
+            flex: 1;
+            width: 100%;
+            border: none;
+            background: #fff; /* DuckDuckGo HTML background */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <a href="../../index.html" class="back-btn">⚡ Hub Home</a>
+        <form class="search-form" action="https://html.duckduckgo.com/html/" method="GET" target="ddg-frame">
+            <input type="text" name="q" class="search-input" placeholder="Search the web securely..." required autocomplete="off">
+            <button type="submit" class="search-submit">Search</button>
+        </form>
+    </div>
+
+    <!-- DuckDuckGo HTML Viewer Frame -->
+    <iframe name="ddg-frame" src="https://html.duckduckgo.com/html/"></iframe>
+
+</body>
+</html>
