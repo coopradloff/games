@@ -24,12 +24,9 @@
     "path": "games/motox3m/index.html"
   },
   {
-  "title": "Portal Game",
-  "slug": "portal",
-  "path": "games/portal/",
-  "description": "A tile-based puzzle game featuring portals, cubes, and buttons.",
-  "thumbnail": "games/portal/Images/Portal1.png",
-  "category": "Puzzle",
-  "status": "Active"
-}
+    "id": "portal",
+    "name": "Portal Game",
+    "icon": "games/portal/Images/Portal1.png",
+    "path": "games/portal/index.html"
+  }
 ]
