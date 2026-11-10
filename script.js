@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         gridContainer.innerHTML = `<p style="color: #ef4444; grid-column: 1/-1; text-align: center;">Failed to load games.json. Check console for details.</p>`;
         gameCounter.textContent = "Error";
     }
-    // test
+    // test v2
     // Render cards function
     function renderGames(gamesToRender) {
         gridContainer.innerHTML = '';
