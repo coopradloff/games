@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for clean typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="logo-area">
+            <h1>⚡ Arcade Hub</h1>
+            <span id="game-counter" class="counter-badge">Loading...</span>
+        </div>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search games... (Press '/' to focus)" autocomplete="off">
+            <kbd>/</kbd>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div id="game-grid" class="game-grid">
+            <!-- Game cards will be dynamically injected here -->
+        </div>
+        
+        <div id="no-results" class="no-results hidden">
+            <p>No games found matching your search. Time to drop a new folder!</p>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

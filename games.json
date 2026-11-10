@@ -1,0 +1,14 @@
+[
+  {
+    "id": "drivemad",
+    "name": "Drive Mad",
+    "icon": "games/drivemad/icon.ico",
+    "path": "games/drivemad/index.html"
+  },
+  {
+    "id": "polytrack",
+    "name": "Polytrack",
+    "icon": "games/polytrack/icon.ico",
+    "path": "games/polytrack/index.html"
+  }
+]
